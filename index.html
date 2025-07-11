@@ -508,7 +508,90 @@
             color: var(--muted);
         }
 
-        /* Token */
+        /* DexScreener Chart Embed - Optimized */
+        #dexscreener-embed {
+            position: relative;
+            width: 100%;
+            padding-bottom: 125%;
+            margin: 40px 0;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
+            background: rgba(10, 10, 10, 0.8);
+        }
+
+        @media(min-width:1400px) {
+            #dexscreener-embed {
+                padding-bottom: 65%;
+            }
+        }
+
+        #dexscreener-embed iframe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            border: 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        #dexscreener-embed iframe.loaded {
+            opacity: 1;
+        }
+
+        /* Loading indicator */
+        .chart-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--primary);
+            font-size: 1.2rem;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chart-loading.hidden {
+            display: none;
+        }
+
+        .loading-spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-top: 2px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .chart-section {
+            margin: 60px 0;
+        }
+
+        .chart-title {
+            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .chart-description {
+            color: var(--muted);
+            text-align: center;
+            margin-bottom: 32px;
+            font-size: 1.1rem;
+        }
         .token-info {
             background: rgba(5, 5, 5, 0.8);
         }
@@ -800,6 +883,25 @@
         <div class="container">
             <h2 class="section-title">$DROPIT Token</h2>
             <p class="section-subtitle">The currency of the XRP revolution</p>
+            
+            <!-- Live Chart Section -->
+            <div class="chart-section">
+                <h3 class="chart-title">📊 Live Trading Chart</h3>
+                <p class="chart-description">Real-time price data and trading activity for $DROPIT on the XRP Ledger</p>
+                <div id="dexscreener-embed">
+                    <div class="chart-loading" id="chartLoading">
+                        <div class="loading-spinner"></div>
+                        Loading chart...
+                    </div>
+                    <iframe 
+                        id="dexChart"
+                        src="https://dexscreener.com/xrpl/44524F5049540000000000000000000000000000.r4KDKqymBGdVHbSoGU9NnxR94mV7p19JDq_XRP?embed=1&loadChartSettings=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15"
+                        loading="lazy"
+                        importance="low">
+                    </iframe>
+                </div>
+            </div>
+            
             <div class="token-container">
                 <h3 style="color: var(--primary); margin-bottom: 24px;">Token Address</h3>
                 <div class="token-address" id="tokenAddress">r4KDKqymBGdVHbSoGU9NnxR94mV7p19JDq</div>
@@ -930,11 +1032,60 @@
             }
         }
 
+        // Chart loading optimization
+        function initChartLoading() {
+            const iframe = document.getElementById('dexChart');
+            const loading = document.getElementById('chartLoading');
+            
+            if (iframe && loading) {
+                iframe.addEventListener('load', function() {
+                    setTimeout(function() {
+                        iframe.classList.add('loaded');
+                        loading.classList.add('hidden');
+                    }, 500);
+                });
+                
+                // Fallback - hide loading after 10 seconds regardless
+                setTimeout(function() {
+                    if (!iframe.classList.contains('loaded')) {
+                        iframe.classList.add('loaded');
+                        loading.classList.add('hidden');
+                    }
+                }, 10000);
+            }
+        }
+
+        // Intersection Observer for lazy loading chart
+        function initChartObserver() {
+            const chartContainer = document.getElementById('dexscreener-embed');
+            
+            if (chartContainer && 'IntersectionObserver' in window) {
+                const observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            const iframe = entry.target.querySelector('iframe');
+                            if (iframe && !iframe.src) {
+                                iframe.src = iframe.getAttribute('data-src');
+                            }
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '50px'
+                });
+                
+                observer.observe(chartContainer);
+            }
+        }
+
         // Initialize everything when page loads
         function initializePage() {
             console.log('Initializing $DROPIT website...');
             initMobileMenu();
             initSmoothScrolling();
+            initChartLoading();
+            initChartObserver();
         }
 
         // Wait for page to load
