@@ -13,13 +13,13 @@
         }
 
         :root {
-            --gold: #ffd700;
-            --light-gold: #ffed4a;
+            --primary: #00d4ff;
+            --light-primary: #4ae4ff;
             --purple: #8a2be2;
             --dark: #0a0a0a;
             --darker: #050505;
             --card: rgba(10, 10, 10, 0.8);
-            --border: rgba(255, 215, 0, 0.3);
+            --border: rgba(0, 212, 255, 0.3);
             --text: #e0e0e0;
             --muted: #a0a0a0;
         }
@@ -61,7 +61,7 @@
         .logo {
             font-size: 2.2rem;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            background: linear-gradient(135deg, var(--primary), var(--light-primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -81,7 +81,7 @@
         }
 
         .nav-links a:hover {
-            color: var(--gold);
+            color: var(--primary);
         }
 
         .mobile-menu-btn {
@@ -98,7 +98,7 @@
         .mobile-menu-btn span {
             width: 100%;
             height: 3px;
-            background: var(--gold);
+            background: var(--primary);
             transition: all 0.3s ease;
         }
 
@@ -150,7 +150,7 @@
             font-size: clamp(3rem, 8vw, 5rem);
             font-weight: 800;
             margin-bottom: 24px;
-            background: linear-gradient(135deg, var(--gold), #ffffff, var(--light-gold), var(--purple));
+            background: linear-gradient(135deg, var(--primary), #ffffff, var(--light-primary), var(--purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -162,17 +162,23 @@
             color: var(--text);
         }
 
+        .hero-subtitle .hashtag {
+            color: var(--primary);
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+        }
+
         .price-target {
             font-size: clamp(2rem, 6vw, 3.5rem);
             font-weight: 700;
-            color: var(--gold);
+            color: var(--primary);
             margin: 32px 0;
-            text-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
+            text-shadow: 0 0 40px rgba(0, 212, 255, 0.8);
         }
 
         .cta-button {
-            background: linear-gradient(135deg, var(--gold), var(--light-gold), var(--purple));
-            color: white;
+            background: linear-gradient(135deg, var(--primary), var(--light-primary), var(--purple));
+            color: black;
             padding: 16px 48px;
             border: none;
             border-radius: 50px;
@@ -182,12 +188,12 @@
             display: inline-block;
             margin: 12px 16px;
             transition: all 0.4s ease;
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
         }
 
         .cta-button:hover {
             transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.5);
         }
 
         /* Sections */
@@ -200,7 +206,7 @@
             text-align: center;
             margin-bottom: 24px;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--gold), #ffffff, var(--light-gold));
+            background: linear-gradient(135deg, var(--primary), #ffffff, var(--light-primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -236,8 +242,8 @@
 
         .mission-card:hover {
             transform: translateY(-12px);
-            box-shadow: 0 25px 50px rgba(255, 215, 0, 0.2);
-            border-color: var(--gold);
+            box-shadow: 0 25px 50px rgba(0, 212, 255, 0.2);
+            border-color: var(--primary);
         }
 
         .mission-icon {
@@ -257,7 +263,7 @@
 
         /* Tokenomics */
         .tokenomics {
-            background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(255, 215, 0, 0.05));
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(0, 212, 255, 0.05));
         }
 
         .tokenomics-grid {
@@ -278,13 +284,13 @@
 
         .tokenomics-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.15);
         }
 
         .tokenomics-number {
             font-size: 3rem;
             font-weight: 700;
-            color: var(--gold);
+            color: var(--primary);
             margin-bottom: 16px;
         }
 
@@ -323,8 +329,8 @@
 
         .feature-card:hover {
             transform: translateY(-8px);
-            border-color: var(--gold);
-            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.15);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.15);
         }
 
         .feature-card h3 {
@@ -349,7 +355,7 @@
         }
 
         .token-address {
-            background: rgba(255, 215, 0, 0.1);
+            background: rgba(0, 212, 255, 0.1);
             padding: 24px;
             border-radius: 16px;
             font-family: 'Courier New', monospace;
@@ -360,7 +366,7 @@
         }
 
         .copy-button {
-            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            background: linear-gradient(135deg, var(--primary), var(--light-primary));
             color: var(--dark);
             border: none;
             padding: 14px 32px;
@@ -380,7 +386,7 @@
         }
 
         .token-description h3 {
-            color: var(--gold);
+            color: var(--primary);
             margin-bottom: 24px;
             font-size: 1.5rem;
         }
@@ -402,7 +408,7 @@
         .footer-logo {
             font-size: 2rem;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            background: linear-gradient(135deg, var(--primary), var(--light-primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -413,21 +419,21 @@
             display: inline-block;
             margin: 0 16px;
             padding: 12px 24px;
-            background: rgba(255, 215, 0, 0.1);
+            background: rgba(0, 212, 255, 0.1);
             border: 1px solid var(--border);
             border-radius: 30px;
-            color: var(--gold);
+            color: var(--primary);
             text-decoration: none;
             transition: all 0.3s ease;
         }
 
         .social-link:hover {
-            background: rgba(255, 215, 0, 0.2);
+            background: rgba(0, 212, 255, 0.2);
             transform: translateY(-3px);
         }
 
         .disclaimer {
-            background: rgba(255, 215, 0, 0.05);
+            background: rgba(0, 212, 255, 0.05);
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 24px;
@@ -437,7 +443,7 @@
         }
 
         .disclaimer h4 {
-            color: var(--gold);
+            color: var(--primary);
             margin-bottom: 16px;
         }
 
@@ -509,11 +515,11 @@
     <section class="hero" id="home">
         <div>
             <h1>$DROPIT</h1>
-            <h2 class="hero-subtitle">DropitOnXrp - The Movement for XRP to $589</h2>
+            <h2 class="hero-subtitle"><span class="hashtag">#DropitOnXrp</span> - The Movement for XRP to $589</h2>
             <div class="price-target">XRP → $589</div>
             <div style="margin: 24px 0;">
                 <p style="font-size: 1.3rem; margin: 24px 0;">Bridge Every Maxis • Unite the XRP Community • Elevate Every Memecoin</p>
-                <p style="font-size: 1.4rem; color: var(--gold); font-weight: 600;">Make XRP the Greatest Cryptocurrency of All Time</p>
+                <p style="font-size: 1.4rem; color: var(--primary); font-weight: 600;">Make XRP the Greatest Cryptocurrency of All Time</p>
             </div>
             <div style="margin-top: 40px;">
                 <a href="https://t.me/dropitcoinxrpl" target="_blank" class="cta-button">Join the Movement</a>
@@ -610,7 +616,7 @@
             <h2 class="section-title">$DROPIT Token</h2>
             <p class="section-subtitle">The currency of the XRP revolution</p>
             <div class="token-container">
-                <h3 style="color: var(--gold); margin-bottom: 24px;">Token Address</h3>
+                <h3 style="color: var(--primary); margin-bottom: 24px;">Token Address</h3>
                 <div class="token-address" id="tokenAddress">r4KDKqymBGdVHbSoGU9NnxR94mV7p19JDq</div>
                 <button class="copy-button" onclick="copyAddress()">Copy Address</button>
                 <div class="token-description">
@@ -625,8 +631,8 @@
     <footer>
         <div class="container">
             <div class="footer-logo">$DROPIT</div>
-            <p style="color: var(--muted); margin-bottom: 16px;">DropitOnXrp - The Movement for XRP to $589</p>
-            <p style="color: var(--gold); font-weight: 500; margin-bottom: 24px;">Unite • Elevate • Dominate</p>
+            <p style="color: var(--muted); margin-bottom: 16px;">#DropitOnXrp - The Movement for XRP to $589</p>
+            <p style="color: var(--primary); font-weight: 500; margin-bottom: 24px;">Unite • Elevate • Dominate</p>
             <div style="margin: 32px 0;">
                 <a href="https://t.me/dropitcoinxrpl" target="_blank" class="social-link">📱 Telegram</a>
                 <a href="https://t.me/dropitcoinxrpl" target="_blank" class="social-link">🐦 Twitter</a>
@@ -685,7 +691,7 @@
                 button.style.background = 'linear-gradient(135deg, #00ff88, #00cc66)';
                 setTimeout(function() {
                     button.textContent = originalText;
-                    button.style.background = 'linear-gradient(135deg, var(--gold), var(--light-gold))';
+                    button.style.background = 'linear-gradient(135deg, var(--primary), var(--light-primary))';
                 }, 2000);
             }
         }
