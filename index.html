@@ -116,6 +116,8 @@
             border: none;
             cursor: pointer;
             gap: 6px;
+            z-index: 1001;
+            position: relative;
         }
 
         .mobile-menu-btn span {
@@ -123,23 +125,30 @@
             height: 3px;
             background: var(--primary);
             transition: all 0.3s ease;
+            border-radius: 2px;
         }
 
         .mobile-nav {
-            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100vh;
             background: rgba(5, 5, 5, 0.98);
-            z-index: 999;
+            backdrop-filter: blur(20px);
+            z-index: 1000;
             padding-top: 100px;
             text-align: center;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
         }
 
         .mobile-nav.active {
-            display: block;
+            transform: translateX(0);
+            opacity: 1;
+            visibility: visible;
         }
 
         .mobile-nav-links {
@@ -156,6 +165,11 @@
             text-decoration: none;
             font-size: 1.5rem;
             font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-nav-links a:hover {
+            color: var(--primary);
         }
 
         /* Header Animations */
@@ -1528,36 +1542,53 @@
             var mobileNav = document.getElementById('mobileNav');
             
             if (mobileMenuBtn && mobileNav) {
-                // Better touch handling
-                mobileMenuBtn.addEventListener('touchstart', function(e) {
+                // Handle button click
+                mobileMenuBtn.addEventListener('click', function(e) {
                     e.preventDefault();
-                    this.click();
-                }, { passive: false });
-                
-                mobileMenuBtn.addEventListener('click', function() {
+                    e.stopPropagation();
+                    
+                    console.log('Mobile menu button clicked');
+                    
                     if (mobileNav.classList.contains('active')) {
                         mobileNav.classList.remove('active');
                         document.body.style.overflow = '';
+                        console.log('Mobile menu closed');
                     } else {
                         mobileNav.classList.add('active');
                         document.body.style.overflow = 'hidden';
+                        console.log('Mobile menu opened');
                     }
                 });
 
+                // Handle mobile navigation links
                 var mobileLinks = document.querySelectorAll('.mobile-nav-links a');
                 for (var i = 0; i < mobileLinks.length; i++) {
-                    mobileLinks[i].addEventListener('click', function() {
+                    mobileLinks[i].addEventListener('click', function(e) {
+                        console.log('Mobile nav link clicked');
                         mobileNav.classList.remove('active');
                         document.body.style.overflow = '';
                     });
                 }
 
+                // Close menu when clicking outside
                 mobileNav.addEventListener('click', function(e) {
                     if (e.target === mobileNav) {
                         mobileNav.classList.remove('active');
                         document.body.style.overflow = '';
                     }
                 });
+
+                // Add escape key handler
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+                        mobileNav.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                });
+
+                console.log('Mobile menu initialized');
+            } else {
+                console.error('Mobile menu elements not found');
             }
         }
 
