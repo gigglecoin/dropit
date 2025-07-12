@@ -27,7 +27,11 @@
             --muted: #a0a0a0;
         }
 
-        /* Subtle Background Gradient */
+        /* Base Styles */
+        html {
+            font-size: clamp(14px, 2vw, 16px);
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, var(--darker) 0%, #1a1a2e 25%, #2d1b69 50%, #1a1a2e 75%, var(--darker) 100%);
@@ -48,7 +52,7 @@
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 clamp(16px, 4vw, 24px);
         }
 
         /* Header */
@@ -63,121 +67,6 @@
             border-bottom: 1px solid var(--border);
             transition: all 0.3s ease;
             overflow: hidden;
-        }
-
-        /* Header XRP Coins */
-        .header-coin {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: linear-gradient(45deg, var(--primary), var(--light-primary));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: black;
-            font-size: 8px;
-            opacity: 0.4;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .header-coin::after {
-            content: 'XRP';
-        }
-
-        .header-coin-1 {
-            top: 15px;
-            left: 15%;
-            animation: headerFloat1 8s ease-in-out infinite;
-            animation-delay: 1s;
-        }
-
-        .header-coin-2 {
-            top: 10px;
-            right: 20%;
-            animation: headerFloat2 6s ease-in-out infinite;
-            animation-delay: 3s;
-        }
-
-        .header-coin-3 {
-            top: 25px;
-            left: 60%;
-            animation: headerFloat1 10s ease-in-out infinite;
-            animation-delay: 5s;
-        }
-
-        @keyframes headerFloat1 {
-            0%, 100% { 
-                transform: translateY(0px) translateX(0px) rotate(0deg);
-                opacity: 0.4;
-            }
-            50% { 
-                transform: translateY(-8px) translateX(10px) rotate(180deg);
-                opacity: 0.6;
-            }
-        }
-
-        @keyframes headerFloat2 {
-            0%, 100% { 
-                transform: translateY(0px) translateX(0px) rotate(0deg);
-                opacity: 0.4;
-            }
-            50% { 
-                transform: translateY(-6px) translateX(-8px) rotate(-180deg);
-                opacity: 0.6;
-            }
-        }
-
-        /* Header Particle Trail */
-        .header-particle {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: var(--primary);
-            border-radius: 50%;
-            opacity: 0.3;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .header-particle-1 {
-            top: 20px;
-            left: 30%;
-            animation: headerParticleFlow 12s linear infinite;
-            animation-delay: 2s;
-        }
-
-        .header-particle-2 {
-            top: 35px;
-            left: 50%;
-            animation: headerParticleFlow 15s linear infinite;
-            animation-delay: 6s;
-        }
-
-        .header-particle-3 {
-            top: 15px;
-            right: 35%;
-            animation: headerParticleFlow 10s linear infinite;
-            animation-delay: 4s;
-        }
-
-        @keyframes headerParticleFlow {
-            0% {
-                transform: translateX(-20px);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.3;
-            }
-            90% {
-                opacity: 0.3;
-            }
-            100% {
-                transform: translateX(100px);
-                opacity: 0;
-            }
         }
 
         nav {
@@ -269,7 +158,121 @@
             font-weight: 600;
         }
 
-        /* Hero */
+        /* Header Animations */
+        .header-coin {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(45deg, var(--primary), var(--light-primary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: black;
+            font-size: 8px;
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .header-coin::after {
+            content: 'XRP';
+        }
+
+        .header-coin-1 {
+            top: 15px;
+            left: 15%;
+            animation: headerFloat1 8s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        .header-coin-2 {
+            top: 10px;
+            right: 20%;
+            animation: headerFloat2 6s ease-in-out infinite;
+            animation-delay: 3s;
+        }
+
+        .header-coin-3 {
+            top: 25px;
+            left: 60%;
+            animation: headerFloat1 10s ease-in-out infinite;
+            animation-delay: 5s;
+        }
+
+        @keyframes headerFloat1 {
+            0%, 100% { 
+                transform: translateY(0px) translateX(0px) rotate(0deg);
+                opacity: 0.4;
+            }
+            50% { 
+                transform: translateY(-8px) translateX(10px) rotate(180deg);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes headerFloat2 {
+            0%, 100% { 
+                transform: translateY(0px) translateX(0px) rotate(0deg);
+                opacity: 0.4;
+            }
+            50% { 
+                transform: translateY(-6px) translateX(-8px) rotate(-180deg);
+                opacity: 0.6;
+            }
+        }
+
+        .header-particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .header-particle-1 {
+            top: 20px;
+            left: 30%;
+            animation: headerParticleFlow 12s linear infinite;
+            animation-delay: 2s;
+        }
+
+        .header-particle-2 {
+            top: 35px;
+            left: 50%;
+            animation: headerParticleFlow 15s linear infinite;
+            animation-delay: 6s;
+        }
+
+        .header-particle-3 {
+            top: 15px;
+            right: 35%;
+            animation: headerParticleFlow 10s linear infinite;
+            animation-delay: 4s;
+        }
+
+        @keyframes headerParticleFlow {
+            0% {
+                transform: translateX(-20px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -385,7 +388,7 @@
             margin-bottom: 80px;
         }
 
-        /* Mission */
+        /* Mission Section */
         .mission {
             background: rgba(10, 10, 10, 0.4);
         }
@@ -404,8 +407,6 @@
             text-align: center;
             border: 1px solid var(--border);
             transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
         }
 
         .mission-card:hover {
@@ -429,7 +430,7 @@
             color: var(--muted);
         }
 
-        /* Tokenomics */
+        /* Tokenomics Section */
         .tokenomics {
             background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(0, 212, 255, 0.05));
         }
@@ -474,7 +475,160 @@
             font-size: 0.95rem;
         }
 
-        /* Community */
+        /* How to Buy Section */
+        .how-to-buy {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(138, 43, 226, 0.1));
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 80px;
+        }
+
+        .step-card {
+            background: var(--card);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.15);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--light-primary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: black;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .step-icon {
+            font-size: 3rem;
+            margin-bottom: 24px;
+            filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.3));
+        }
+
+        .step-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .step-card p {
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .step-button {
+            background: linear-gradient(135deg, var(--primary), var(--light-primary));
+            color: black;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.2);
+        }
+
+        .step-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.4);
+        }
+
+        .requirements-section {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .requirements-title {
+            color: var(--primary);
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .requirements-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .requirement-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 15px;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .requirement-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .requirement-text {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 152, 0, 0.1));
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .warning-title {
+            color: #ffc107;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .warning-text {
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
         .community {
             background: rgba(10, 10, 10, 0.4);
         }
@@ -511,90 +665,7 @@
             color: var(--muted);
         }
 
-        /* DexScreener Chart Embed - Optimized */
-        #dexscreener-embed {
-            position: relative;
-            width: 100%;
-            padding-bottom: 125%;
-            margin: 40px 0;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
-            background: rgba(10, 10, 10, 0.8);
-        }
-
-        @media(min-width:1400px) {
-            #dexscreener-embed {
-                padding-bottom: 65%;
-            }
-        }
-
-        #dexscreener-embed iframe {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            border: 0;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        #dexscreener-embed iframe.loaded {
-            opacity: 1;
-        }
-
-        /* Loading indicator */
-        .chart-loading {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: var(--primary);
-            font-size: 1.2rem;
-            z-index: 2;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .chart-loading.hidden {
-            display: none;
-        }
-
-        .loading-spinner {
-            width: 20px;
-            height: 20px;
-            border: 2px solid rgba(0, 212, 255, 0.3);
-            border-top: 2px solid var(--primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .chart-section {
-            margin: 60px 0;
-        }
-
-        .chart-title {
-            color: var(--primary);
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 16px;
-            text-align: center;
-        }
-
-        .chart-description {
-            color: var(--muted);
-            text-align: center;
-            margin-bottom: 32px;
-            font-size: 1.1rem;
-        }
+        /* Token Section */
         .token-info {
             background: rgba(5, 5, 5, 0.8);
         }
@@ -646,6 +717,145 @@
             font-size: 1.2rem;
             line-height: 1.7;
             color: var(--text);
+        }
+
+        /* Chart Styles - Fast Loading Optimized */
+        #dexscreener-embed {
+            position: relative;
+            width: 100%;
+            padding-bottom: 75%;
+            margin: 40px 0;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
+            background: rgba(10, 10, 10, 0.8);
+        }
+
+        .chart-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .chart-iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: 16px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            transform: translateZ(0);
+            will-change: transform;
+        }
+
+        .chart-iframe.loaded {
+            opacity: 1;
+        }
+
+        .chart-loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            border-radius: 16px;
+            transition: opacity 0.5s ease;
+        }
+
+        .chart-loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-content {
+            text-align: center;
+            color: var(--primary);
+        }
+
+        .loading-spinner {
+            width: 30px;
+            height: 30px;
+            border: 3px solid rgba(0, 212, 255, 0.3);
+            border-top: 3px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .loading-progress {
+            width: 200px;
+            height: 4px;
+            background: rgba(0, 212, 255, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--light-primary));
+            border-radius: 2px;
+            width: 0%;
+            animation: loadProgress 8s ease-out forwards;
+        }
+
+        @keyframes loadProgress {
+            0% { width: 0%; }
+            25% { width: 30%; }
+            50% { width: 60%; }
+            75% { width: 85%; }
+            100% { width: 100%; }
+        }
+
+        .chart-fallback-btn {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            background: rgba(10, 10, 10, 0.9);
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .chart-section {
+            margin: 60px 0;
+        }
+
+        .chart-title {
+            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .chart-description {
+            color: var(--muted);
+            text-align: center;
+            margin-bottom: 32px;
+            font-size: 1.1rem;
         }
 
         /* Footer */
@@ -709,23 +919,7 @@
             margin-top: 24px;
         }
 
-        /* Auto-Optimization for Different Devices */
-        
-        /* Base responsive container */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 clamp(16px, 4vw, 24px);
-        }
-
-        /* Fluid typography scaling */
-        html {
-            font-size: clamp(14px, 2vw, 16px);
-        }
-
-        /* Enhanced responsive breakpoints */
-        
-        /* Extra small devices (phones, 576px and down) */
+        /* Responsive Design */
         @media (max-width: 575.98px) {
             .container {
                 padding: 0 12px;
@@ -744,21 +938,6 @@
                 min-height: 80vh;
             }
             
-            .hero h1 {
-                font-size: clamp(2rem, 12vw, 3rem);
-                margin-bottom: 16px;
-            }
-            
-            .hero-subtitle {
-                font-size: clamp(0.9rem, 4vw, 1.2rem);
-                margin-bottom: 20px;
-            }
-            
-            .price-target {
-                font-size: clamp(1.5rem, 8vw, 2.5rem);
-                margin: 20px 0;
-            }
-            
             .cta-button {
                 padding: 12px 24px;
                 font-size: 0.9rem;
@@ -774,19 +953,10 @@
                 padding: 60px 0;
             }
             
-            .section-title {
-                font-size: clamp(1.8rem, 8vw, 2.5rem);
-                margin-bottom: 16px;
-            }
-            
-            .section-subtitle {
-                font-size: 1rem;
-                margin-bottom: 40px;
-            }
-            
             .mission-grid,
             .tokenomics-grid,
-            .community-features {
+            .community-features,
+            .steps-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
                 margin-top: 40px;
@@ -794,43 +964,15 @@
             
             .mission-card,
             .tokenomics-card,
-            .feature-card {
+            .feature-card,
+            .step-card {
                 padding: 24px;
-            }
-            
-            .mission-icon {
-                font-size: 2.5rem;
-                margin-bottom: 16px;
-            }
-            
-            .tokenomics-number {
-                font-size: 2rem;
-            }
-            
-            .token-address {
-                font-size: 0.9rem;
-                padding: 16px;
-                word-break: break-all;
-            }
-            
-            .copy-button {
-                padding: 12px 24px;
-                font-size: 0.9rem;
             }
             
             .social-link {
                 display: block;
                 margin: 8px auto;
                 max-width: 200px;
-            }
-            
-            /* Header adjustments */
-            header {
-                padding: 12px 0;
-            }
-            
-            .logo {
-                font-size: 1.6rem;
             }
             
             .header-coin {
@@ -844,22 +986,26 @@
                 height: 2px;
             }
             
-            /* Chart optimization */
             #dexscreener-embed {
-                margin: 20px 0;
-                padding-bottom: 140%;
+                padding-bottom: 80%;
             }
             
-            .chart-title {
-                font-size: 1.4rem;
+            .requirements-list {
+                grid-template-columns: 1fr;
+                gap: 12px;
             }
             
-            .chart-description {
-                font-size: 0.95rem;
+            .step-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .step-icon {
+                font-size: 2.5rem;
             }
         }
 
-        /* Small devices (landscape phones, 576px and up) */
         @media (min-width: 576px) and (max-width: 767.98px) {
             .nav-links {
                 display: none;
@@ -869,28 +1015,6 @@
                 display: flex;
             }
             
-            .hero {
-                padding: 120px 0 60px;
-            }
-            
-            .cta-button {
-                padding: 14px 32px;
-                margin: 10px 8px;
-                display: inline-block;
-                width: auto;
-            }
-            
-            .mission-grid,
-            .community-features {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-            
-            .tokenomics-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-            }
-            
             .social-link {
                 display: block;
                 margin: 8px auto;
@@ -898,146 +1022,53 @@
             }
             
             #dexscreener-embed {
-                padding-bottom: 120%;
+                padding-bottom: 70%;
             }
         }
 
-        /* Medium devices (tablets, 768px and up) */
-        @media (min-width: 768px) and (max-width: 991.98px) {
+        @media (min-width: 768px) {
             .mission-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 32px;
-            }
-            
-            .tokenomics-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 24px;
-            }
-            
-            .community-features {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 24px;
-            }
-            
-            .hero {
-                padding: 140px 0 80px;
-            }
-            
-            #dexscreener-embed {
-                padding-bottom: 90%;
-            }
-        }
-
-        /* Large devices (desktops, 992px and up) */
-        @media (min-width: 992px) and (max-width: 1199.98px) {
-            .mission-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 40px;
             }
             
             .tokenomics-grid {
                 grid-template-columns: repeat(4, 1fr);
-                gap: 28px;
             }
             
             .community-features {
                 grid-template-columns: repeat(3, 1fr);
-                gap: 32px;
+            }
+            
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             
             #dexscreener-embed {
-                padding-bottom: 75%;
+                padding-bottom: 60%;
             }
         }
 
-        /* Extra large devices (large desktops, 1200px and up) */
         @media (min-width: 1200px) {
             .mission-grid {
                 grid-template-columns: repeat(4, 1fr);
-                gap: 40px;
             }
             
-            .tokenomics-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 32px;
-            }
-            
-            .community-features {
+            .steps-grid {
                 grid-template-columns: repeat(3, 1fr);
-                gap: 32px;
             }
         }
 
-        /* Ultra wide screens (1400px and up) */
         @media (min-width: 1400px) {
             .container {
                 max-width: 1600px;
             }
             
             #dexscreener-embed {
-                padding-bottom: 65%;
+                padding-bottom: 50%;
             }
         }
 
-        /* High DPI / Retina displays */
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-            .header-coin,
-            .header-particle {
-                backface-visibility: hidden;
-                transform: translateZ(0);
-            }
-        }
-
-        /* Landscape orientation optimization */
-        @media (orientation: landscape) and (max-height: 600px) {
-            .hero {
-                min-height: 90vh;
-                padding: 100px 0 40px;
-            }
-            
-            .price-target {
-                margin: 16px 0;
-            }
-            
-            .section {
-                padding: 80px 0;
-            }
-        }
-
-        /* Print styles */
-        @media print {
-            .header-coin,
-            .header-particle,
-            #dexscreener-embed,
-            .cta-button {
-                display: none !important;
-            }
-            
-            body {
-                background: white !important;
-                color: black !important;
-            }
-            
-            .section-title,
-            .logo,
-            .price-target {
-                color: black !important;
-            }
-        }
-
-        /* Hover capability detection */
-        @media (hover: hover) and (pointer: fine) {
-            .cta-button:hover,
-            .mission-card:hover,
-            .tokenomics-card:hover,
-            .feature-card:hover,
-            .social-link:hover,
-            .copy-button:hover {
-                /* Enhanced hover effects for devices that support it */
-            }
-        }
-
-        /* Reduced motion for accessibility */
+        /* Accessibility */
         @media (prefers-reduced-motion: reduce) {
             *,
             *::before,
@@ -1046,32 +1077,6 @@
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
                 scroll-behavior: auto !important;
-            }
-            
-            .header-coin,
-            .header-particle,
-            .price-target,
-            .logo {
-                animation: none !important;
-            }
-        }
-
-        /* Dark mode support */
-        @media (prefers-color-scheme: dark) {
-            /* Already optimized for dark mode */
-        }
-
-        /* High contrast mode */
-        @media (prefers-contrast: high) {
-            .mission-card,
-            .tokenomics-card,
-            .feature-card,
-            .token-address {
-                border: 2px solid var(--primary);
-            }
-            
-            .cta-button {
-                border: 2px solid var(--primary);
             }
         }
     </style>
@@ -1094,6 +1099,7 @@
                 <li><a href="#mission">Mission</a></li>
                 <li><a href="#tokenomics">Tokenomics</a></li>
                 <li><a href="#community">Community</a></li>
+                <li><a href="#how-to-buy">How to Buy</a></li>
                 <li><a href="#token">Token</a></li>
             </ul>
             <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -1111,6 +1117,7 @@
             <li><a href="#mission">Mission</a></li>
             <li><a href="#tokenomics">Tokenomics</a></li>
             <li><a href="#community">Community</a></li>
+            <li><a href="#how-to-buy">How to Buy</a></li>
             <li><a href="#token">Token</a></li>
         </ul>
     </div>
@@ -1214,6 +1221,99 @@
         </div>
     </section>
 
+    <!-- How to Buy -->
+    <section class="how-to-buy section" id="how-to-buy">
+        <div class="container">
+            <h2 class="section-title">How to Buy $DROPIT</h2>
+            <p class="section-subtitle">Simple steps to join the XRP revolution</p>
+            
+            <div class="requirements-section">
+                <h3 class="requirements-title">📋 What You'll Need</h3>
+                <p style="color: var(--muted); margin-bottom: 20px;">Before you start, make sure you have these essentials:</p>
+                <div class="requirements-list">
+                    <div class="requirement-item">
+                        <span class="requirement-icon">💰</span>
+                        <span class="requirement-text">XRP for trading</span>
+                    </div>
+                    <div class="requirement-item">
+                        <span class="requirement-icon">📱</span>
+                        <span class="requirement-text">XRPL compatible wallet</span>
+                    </div>
+                    <div class="requirement-item">
+                        <span class="requirement-icon">🔗</span>
+                        <span class="requirement-text">Trustline setup</span>
+                    </div>
+                    <div class="requirement-item">
+                        <span class="requirement-icon">⚡</span>
+                        <span class="requirement-text">Small XRP reserve</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">📱</div>
+                    <h3>Setup XRPL Wallet</h3>
+                    <p>Download an XRPL-compatible wallet like XAMAN, Gem Wallet, or Joey. Transfer your XRP to this wallet.</p>
+                    <div style="margin-top: 15px;">
+                        <a href="https://xaman.app/" target="_blank" class="step-button" style="margin: 5px;">Get XAMAN</a>
+                        <a href="https://joeywallet.xyz/" target="_blank" class="step-button" style="margin: 5px;">Get Joey</a>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">💳</div>
+                    <h3>Get XRP</h3>
+                    <p>Purchase XRP from any major exchange like Coinbase, Binance, or Kraken. You can also use our recommended BridgeBot to convert your existing assets to XRP.</p>
+                    <div style="margin-top: 15px;">
+                        <a href="https://www.coinbase.com/price/xrp" target="_blank" class="step-button" style="margin: 5px;">Buy XRP</a>
+                        <a href="https://t.me/ChangeNOW_officialbot" target="_blank" class="step-button" style="margin: 5px;">Use BridgeBot</a>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">🤖</div>
+                    <h3>Use Trading Bot</h3>
+                    <p>Use our recommended Telegram trading bot for the easiest purchase experience. Fast, secure, and user-friendly.</p>
+                    <a href="https://t.me/XrpLedgerSniperBot?start=r4KDKqymBGdVHbSoGU9NnxR94mV7p19JDq-DS9GZE" target="_blank" class="step-button">Trade Now</a>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">🚀</div>
+                    <h3>Join Community</h3>
+                    <p>Connect with fellow $DROPIT holders in our Telegram community. Share insights and stay updated on the latest news.</p>
+                    <a href="https://t.me/dropitcoinxrpl" target="_blank" class="step-button">Join Telegram</a>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">5</div>
+                    <div class="step-icon">🔗</div>
+                    <h3>Setup Trustline and Buy</h3>
+                    <p>Set up a trustline for $DROPIT token in your wallet using our token address, then use the trading bot to purchase your tokens.</p>
+                    <div style="margin-top: 15px;">
+                        <button class="step-button" onclick="copyTokenAddress()" style="margin: 5px;">Copy Token Address</button>
+                        <a href="https://xmagnetic.org/tokens/DROPIT%2Br4KDKqymBGdVHbSoGU9NnxR94mV7p19JDq?network=mainnet&currency=DROPIT&issuer=r4KDKqymBGdVHbSoGU9NnxR94mV7p19JDq" target="_blank" class="step-button" style="margin: 5px;">Set Trustline</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <div class="warning-title">
+                    <span>⚠️</span>
+                    <span>Important Security Notice</span>
+                </div>
+                <p class="warning-text">
+                    Always verify token addresses and never share your private keys or seed phrases. Only use official links provided here. 
+                    Be aware of scams and always double-check before making transactions. Cryptocurrency investments carry high risk.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <!-- Token -->
     <section class="token-info section" id="token">
         <div class="container">
@@ -1222,19 +1322,39 @@
             
             <!-- Live Chart Section -->
             <div class="chart-section">
-                <h3 class="chart-title">📊 Live Trading Chart</h3>
+                <h3 class="chart-title">📊 $DROPIT Live Trading Chart</h3>
                 <p class="chart-description">Real-time price data and trading activity for $DROPIT on the XRP Ledger</p>
                 <div id="dexscreener-embed">
-                    <div class="chart-loading" id="chartLoading">
-                        <div class="loading-spinner"></div>
-                        Loading chart...
+                    <div class="chart-container">
+                        <iframe 
+                            id="dexChart"
+                            class="chart-iframe"
+                            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+                            referrerpolicy="no-referrer"
+                            loading="eager"
+                            fetchpriority="high">
+                        </iframe>
                     </div>
-                    <iframe 
-                        id="dexChart"
-                        src="https://dexscreener.com/xrpl/44524F5049540000000000000000000000000000.r4KDKqymBGdVHbSoGU9NnxR94mV7p19JDq_XRP?embed=1&loadChartSettings=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15"
-                        loading="lazy"
-                        importance="low">
-                    </iframe>
+                    <div class="chart-loading-overlay" id="chartLoadingOverlay">
+                        <div class="loading-content">
+                            <div class="loading-spinner"></div>
+                            <div class="loading-text">Loading $DROPIT Chart...</div>
+                            <div class="loading-progress">
+                                <div class="progress-bar" id="progressBar"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-fallback-btn" id="fallbackBtn" style="display: none;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 2rem; color: var(--primary); margin-bottom: 10px;">📊</div>
+                            <p style="color: var(--muted); margin-bottom: 15px;">Chart loading slowly?</p>
+                            <a href="https://dexscreener.com/xrpl/44524F5049540000000000000000000000000000.r4KDKqymBGdVHbSoGU9NnxR94mV7p19JDq_XRP" 
+                               target="_blank" 
+                               class="step-button">
+                                📈 Open Direct Chart
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -1272,24 +1392,38 @@
     </footer>
 
     <script>
-        // Copy token address function
+        // Copy token address function for step 5
+        function copyTokenAddress() {
+            var address = 'r4KDKqymBGdVHbSoGU9NnxR94mV7p19JDq';
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(address).then(function() {
+                    showCopySuccess('copyTokenAddress');
+                }).catch(function() {
+                    fallbackCopy(address, 'copyTokenAddress');
+                });
+            } else {
+                fallbackCopy(address, 'copyTokenAddress');
+            }
+        }
+
+        // Copy token address function (existing)
         function copyAddress() {
             var address = document.getElementById('tokenAddress').textContent;
             if (address) {
                 address = address.replace(/\s/g, '');
                 if (navigator.clipboard && navigator.clipboard.writeText) {
                     navigator.clipboard.writeText(address).then(function() {
-                        showCopySuccess();
+                        showCopySuccess('copyAddress');
                     }).catch(function() {
-                        fallbackCopy(address);
+                        fallbackCopy(address, 'copyAddress');
                     });
                 } else {
-                    fallbackCopy(address);
+                    fallbackCopy(address, 'copyAddress');
                 }
             }
         }
 
-        function fallbackCopy(text) {
+        function fallbackCopy(text, source) {
             var textArea = document.createElement('textarea');
             textArea.value = text;
             textArea.style.position = 'fixed';
@@ -1299,15 +1433,28 @@
             textArea.select();
             try {
                 document.execCommand('copy');
-                showCopySuccess();
+                showCopySuccess(source);
             } catch (err) {
                 console.log('Copy failed');
             }
             document.body.removeChild(textArea);
         }
 
-        function showCopySuccess() {
-            var button = document.querySelector('.copy-button');
+        function showCopySuccess(source) {
+            var button;
+            if (source === 'copyTokenAddress') {
+                // Find the "Copy Token Address" button in step 5
+                var buttons = document.querySelectorAll('.step-button');
+                for (var i = 0; i < buttons.length; i++) {
+                    if (buttons[i].textContent.includes('Copy Token Address')) {
+                        button = buttons[i];
+                        break;
+                    }
+                }
+            } else {
+                button = document.querySelector('.copy-button');
+            }
+            
             if (button) {
                 var originalText = button.textContent;
                 button.textContent = 'Copied!';
@@ -1319,53 +1466,91 @@
             }
         }
 
-        // Mobile menu functions
-        function initMobileMenu() {
-            var mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            var mobileNav = document.getElementById('mobileNav');
+        // Chart loading optimization - Enhanced
+        function initChartLoading() {
+            const iframe = document.getElementById('dexChart');
+            const loading = document.getElementById('chartLoading');
+            const placeholder = document.getElementById('chartPlaceholder');
             
-            if (mobileMenuBtn && mobileNav) {
-                mobileMenuBtn.addEventListener('click', function() {
-                    if (mobileNav.classList.contains('active')) {
-                        mobileNav.classList.remove('active');
-                    } else {
-                        mobileNav.classList.add('active');
+            if (iframe && loading) {
+                // Show shimmer placeholder after 1 second
+                setTimeout(function() {
+                    if (!iframe.classList.contains('loaded')) {
+                        loading.style.display = 'none';
+                        if (placeholder) {
+                            placeholder.style.display = 'flex';
+                        }
                     }
+                }, 1000);
+                
+                iframe.addEventListener('load', function() {
+                    setTimeout(function() {
+                        iframe.classList.add('loaded');
+                        loading.classList.add('hidden');
+                        if (placeholder) {
+                            placeholder.style.display = 'none';
+                        }
+                    }, 300);
                 });
-
-                var mobileLinks = document.querySelectorAll('.mobile-nav-links a');
-                for (var i = 0; i < mobileLinks.length; i++) {
-                    mobileLinks[i].addEventListener('click', function() {
-                        mobileNav.classList.remove('active');
-                    });
-                }
-
-                mobileNav.addEventListener('click', function(e) {
-                    if (e.target === mobileNav) {
-                        mobileNav.classList.remove('active');
+                
+                // Fallback - hide loading after 8 seconds (reduced from 10)
+                setTimeout(function() {
+                    if (!iframe.classList.contains('loaded')) {
+                        iframe.classList.add('loaded');
+                        loading.classList.add('hidden');
+                        if (placeholder) {
+                            placeholder.style.display = 'none';
+                        }
                     }
-                });
+                }, 8000);
             }
         }
 
-        // Smooth scrolling
-        function initSmoothScrolling() {
-            var links = document.querySelectorAll('a[href^="#"]');
-            for (var i = 0; i < links.length; i++) {
-                links[i].addEventListener('click', function(e) {
-                    e.preventDefault();
-                    var targetId = this.getAttribute('href');
-                    var target = document.querySelector(targetId);
-                    if (target) {
-                        var headerHeight = 80;
-                        var targetPosition = target.offsetTop - headerHeight;
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
+        // Enhanced Intersection Observer for faster chart loading
+        function initChartObserver() {
+            const chartContainer = document.getElementById('dexscreener-embed');
+            const iframe = document.getElementById('dexChart');
+            
+            if (chartContainer && iframe && 'IntersectionObserver' in window) {
+                const observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            // Preload the iframe immediately when visible
+                            if (!iframe.src && iframe.getAttribute('data-src')) {
+                                iframe.src = iframe.getAttribute('data-src');
+                                
+                                // Add connection preload hint
+                                const link = document.createElement('link');
+                                link.rel = 'preconnect';
+                                link.href = 'https://dexscreener.com';
+                                document.head.appendChild(link);
+                            }
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '100px' // Increased from 50px for earlier loading
                 });
+                
+                observer.observe(chartContainer);
             }
+        }
+
+        // Preload chart resources
+        function preloadChartResources() {
+            // DNS prefetch for faster connection
+            const dnsPrefetch = document.createElement('link');
+            dnsPrefetch.rel = 'dns-prefetch';
+            dnsPrefetch.href = '//dexscreener.com';
+            document.head.appendChild(dnsPrefetch);
+            
+            // Preconnect for even faster loading
+            const preconnect = document.createElement('link');
+            preconnect.rel = 'preconnect';
+            preconnect.href = 'https://dexscreener.com';
+            preconnect.crossOrigin = 'anonymous';
+            document.head.appendChild(preconnect);
         }
 
         // Device optimization and responsive handling
@@ -1389,20 +1574,11 @@
             // Handle orientation changes
             function handleOrientationChange() {
                 setTimeout(function() {
-                    // Trigger reflow for proper layout
                     window.dispatchEvent(new Event('resize'));
                 }, 100);
             }
             
             window.addEventListener('orientationchange', handleOrientationChange);
-            
-            // Optimize chart loading for mobile
-            if (isMobile) {
-                const chartContainer = document.getElementById('dexscreener-embed');
-                if (chartContainer) {
-                    chartContainer.style.willChange = 'transform';
-                }
-            }
             
             // Add safe area padding for notched devices
             if (CSS.supports('padding: env(safe-area-inset-top)')) {
@@ -1429,7 +1605,7 @@
                         document.body.style.overflow = '';
                     } else {
                         mobileNav.classList.add('active');
-                        document.body.style.overflow = 'hidden'; // Prevent background scroll
+                        document.body.style.overflow = 'hidden';
                     }
                 });
 
@@ -1450,7 +1626,7 @@
             }
         }
 
-        // Optimized smooth scrolling with device detection
+        // Optimized smooth scrolling
         function initSmoothScrolling() {
             var links = document.querySelectorAll('a[href^="#"]');
             for (var i = 0; i < links.length; i++) {
@@ -1462,84 +1638,24 @@
                         var headerHeight = window.innerWidth <= 768 ? 60 : 80;
                         var targetPosition = target.offsetTop - headerHeight;
                         
-                        // Use native smooth scroll on modern browsers, fallback for others
-                        if ('scrollBehavior' in document.documentElement.style) {
-                            window.scrollTo({
-                                top: targetPosition,
-                                behavior: 'smooth'
-                            });
-                        } else {
-                            // Fallback smooth scroll
-                            var startPosition = window.pageYOffset;
-                            var distance = targetPosition - startPosition;
-                            var duration = 600;
-                            var start = null;
-                            
-                            function animation(currentTime) {
-                                if (start === null) start = currentTime;
-                                var timeElapsed = currentTime - start;
-                                var run = ease(timeElapsed, startPosition, distance, duration);
-                                window.scrollTo(0, run);
-                                if (timeElapsed < duration) requestAnimationFrame(animation);
-                            }
-                            
-                            function ease(t, b, c, d) {
-                                t /= d / 2;
-                                if (t < 1) return c / 2 * t * t + b;
-                                t--;
-                                return -c / 2 * (t * (t - 2) - 1) + b;
-                            }
-                            
-                            requestAnimationFrame(animation);
-                        }
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
                     }
                 });
             }
         }
 
-        // Performance monitoring and optimization
-        function initPerformanceOptimization() {
-            // Use Intersection Observer for performance
-            if ('IntersectionObserver' in window) {
-                const observer = new IntersectionObserver(function(entries) {
-                    entries.forEach(function(entry) {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('animate-in');
-                        }
-                    });
-                }, {
-                    threshold: 0.1,
-                    rootMargin: '50px'
-                });
-                
-                // Observe section elements for animation
-                var sections = document.querySelectorAll('.section');
-                for (var i = 0; i < sections.length; i++) {
-                    observer.observe(sections[i]);
-                }
-            }
-            
-            // Debounce resize events
-            var resizeTimer;
-            window.addEventListener('resize', function() {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(function() {
-                    // Handle resize optimization
-                    var vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-                    document.documentElement.style.setProperty('--vw', vw + 'px');
-                }, 250);
-            });
-        }
-
         // Initialize everything when page loads
         function initializePage() {
             console.log('Initializing $DROPIT website...');
+            preloadChartResources();
             initDeviceOptimization();
             initMobileMenu();
             initSmoothScrolling();
             initChartLoading();
             initChartObserver();
-            initPerformanceOptimization();
         }
 
         // Wait for page to load
